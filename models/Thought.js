@@ -38,6 +38,6 @@ thoughtSchema
   });
 
 // Initialize our Video model
-const Thought = model('video', videoSchema);
+const Thought = model('thought', thoughtSchema);
 
 module.exports = Thought;

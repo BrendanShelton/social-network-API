@@ -1,6 +1,6 @@
 const { Schema, Types } = require('mongoose');
 
-const responseSchema = new Schema(
+const reactionSchema = new Schema(
   {
     reactionId: {
       type: Schema.Types.ObjectId,
@@ -35,5 +35,7 @@ reactionSchema
     
     return `${this.createdAt.getMonth + 1}/${this.createdAt.getDate}/${this.createdAt.getFullYear} ${this.createdAt.get}:${this.createdAt.getUTCMinutes}`
   });
+
+//const Reaction = model('user', reactionSchema);
 
 module.exports = reactionSchema;
