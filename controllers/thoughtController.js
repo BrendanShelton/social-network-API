@@ -2,6 +2,7 @@ const { Thought, User } = require('../models');
 
 module.exports = {
   getThoughts(req, res) {
+    console.log("get thoughts")
     Thought.find()
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
@@ -9,9 +10,9 @@ module.exports = {
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .then((thoughts) =>
-        !thought
+        !thoughts
           ? res.status(404).json({ message: 'No thought with that ID' })
-          : res.json(thought)
+          : res.json(thoughts)
       )
       .catch((err) => res.status(500).json(err));
   },
@@ -30,7 +31,7 @@ module.exports = {
           ? res.status(404).json({
               message: 'Thought created, but found no user with that ID',
             })
-          : res.json('Created thought 🎉')
+          : res.json('Created thought')
       )
       .catch((err) => {
         console.log(err);
@@ -77,7 +78,7 @@ module.exports = {
   addThoughtReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $addToSet: { responses: req.body } },
+      { $addToSet: { reactions: req.body } },
       { runValidators: true, new: true }
     )
       .then((thought) =>

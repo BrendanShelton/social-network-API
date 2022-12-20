@@ -26,3 +26,5 @@ router.route('/:thoughtId/reaction').post(addThoughtReaction);
 router.route('/:thoughtId/reaction/:reactionId').delete(removeThoughtReaction);
 
 module.exports = router;
+
+//can't delete thought, reactions do not show up

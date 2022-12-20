@@ -42,20 +42,20 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No user with this id!' })
-          : res.json(course)
+          : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { friends: req.body } },
+      { $addToSet: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
-      .then((thought) =>
-        !thought
+      .then((user) =>
+        !user
           ? res.status(404).json({ message: 'No user with this id!' })
-          : res.json(thought)
+          : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
@@ -66,8 +66,8 @@ module.exports = {
       { $pull: { friends: { friendId: req.params.friendId } } },
       { runValidators: true, new: true }
     )
-      .then((thought) =>
-        !thought
+      .then((user) =>
+        !user
           ? res.status(404).json({ message: 'No user with this id!' })
           : res.json(user)
       )
