@@ -27,4 +27,4 @@ router.route('/:thoughtId/reaction/:reactionId').delete(removeThoughtReaction);
 
 module.exports = router;
 
-//can't delete thought, reactions do not show up
+//can't delete friend,

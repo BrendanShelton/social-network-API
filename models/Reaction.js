@@ -33,7 +33,7 @@ reactionSchema
   // Getter
   .get(function () {
     
-    return `${this.createdAt.getMonth + 1}/${this.createdAt.getDate}/${this.createdAt.getFullYear} ${this.createdAt.get}:${this.createdAt.getUTCMinutes}`
+    return this.createdAt.toLocaleString()
   });
 
 //const Reaction = model('user', reactionSchema);
